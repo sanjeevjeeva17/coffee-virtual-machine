@@ -1,4 +1,4 @@
-import { ResourceDto } from '../schema/dto/resourceDto';
+import { ResourceDtoModel } from '../schema/dto/resourceDto.model';
 import { ResourceValue } from '../schema/model/resourceValue';
 import { Injectable } from '@angular/core';
 
@@ -14,7 +14,7 @@ private maxValues = {
     coffeeBean: 1
   };
 
-private calculateResourcePercentages(resources: ResourceDto): ResourceValue {
+private calculateResourcePercentages(resources: ResourceDtoModel): ResourceValue {
     return {
       almond: (resources.almond / this.maxValues.milkTypes) * 100,
       skimmed: (resources.skimmed / this.maxValues.milkTypes) * 100,
@@ -26,7 +26,7 @@ private calculateResourcePercentages(resources: ResourceDto): ResourceValue {
     };
   }
 
-public checkResourceStatus(resources: ResourceDto): ResourceValue {
+public checkResourceStatus(resources: ResourceDtoModel): ResourceValue {
     const percentages = this.calculateResourcePercentages(resources);
 
     const allZero = Object.values(resources).every(value => value === 0);

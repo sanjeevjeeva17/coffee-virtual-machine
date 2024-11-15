@@ -8,14 +8,14 @@ import { GenericCardComponent } from '../../shared/generic-card-component/generi
   standalone: true,
   imports: [CommonModule, MatCard, MatCardTitle, GenericCardComponent],
   templateUrl: './customization-component.component.html',
-  styleUrls: ['./customization-component.component.css'],
+  styleUrls: ['./customization-component.component.scss'],
 })
 export class CustomizationComponentComponent {
   @Input() customizationOptions: { title: string, choices: string[] }[] = [];
   selectedOptions: { [key: string]: string | number } = {};
   @Output() allOptionsSelected = new EventEmitter<{ [key: string]: string | number }>();
 
-  onSelectOption(optionTitle: string, choice: string): void {
+  public onSelectOption(optionTitle: string, choice: string): void {
     this.selectedOptions[optionTitle] = choice;
 
     // Calculate amounts based on the chosen options
@@ -34,7 +34,7 @@ export class CustomizationComponentComponent {
     }
   }
 
-  getMilkAmount(cupSize: string): number {
+  public getMilkAmount(cupSize: string): number {
     switch (cupSize) {
       case 'Medium':
         return 0.3;
@@ -45,7 +45,7 @@ export class CustomizationComponentComponent {
     }
   }
 
-  getSugarAmount(sugarLevel: string): number {
+  public getSugarAmount(sugarLevel: string): number {
     switch (sugarLevel) {
       case 'None':
         return 0;
@@ -60,7 +60,7 @@ export class CustomizationComponentComponent {
     }
   }
 
-  resetSelections(): void {
+  public resetSelections(): void {
     this.selectedOptions = {};
   }
 }

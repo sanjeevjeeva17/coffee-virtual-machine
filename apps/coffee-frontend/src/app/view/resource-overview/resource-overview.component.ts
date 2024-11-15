@@ -10,7 +10,7 @@ import { MatButton } from '@angular/material/button';
   standalone: true,
   imports: [CommonModule, MatCardTitle, MatCard, MatProgressBarModule, MatButton],
   templateUrl: './resource-overview.component.html',
-  styleUrls: ['./resource-overview.component.css'],
+  styleUrls: ['./resource-overview.component.scss'],
 })
 export class ResourceOverviewComponent {
   @Input() resources: ResourceValue = {

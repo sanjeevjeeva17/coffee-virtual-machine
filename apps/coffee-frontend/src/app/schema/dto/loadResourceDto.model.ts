@@ -5,7 +5,7 @@ export interface MilkDto {
   skimmed: number;
 }
 
-export interface LoadResourcesDto {
+export interface LoadResourcesDtoModel {
   milk: MilkDto;
   sugar: number;
   coffeeBean: number

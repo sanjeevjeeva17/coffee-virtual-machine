@@ -1,4 +1,4 @@
-export interface ResourceDto {
+export interface ResourceDtoModel {
   almond: number;
   id: number;
   skimmed: number;

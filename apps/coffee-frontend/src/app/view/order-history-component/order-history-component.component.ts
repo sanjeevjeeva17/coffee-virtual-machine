@@ -11,7 +11,7 @@ import { OrdersModel } from '../../schema/model/orders.model';
   styleUrls: ['./order-history-component.component.scss'],
 })
 export class OrderHistoryComponentComponent {
-  displayedColumns: string[] = ['id', 'coffeeType', 'size', 'sugar', 'timestamp', 'milk'];
+  public displayedColumns: string[] = ['id', 'coffeeType', 'size', 'sugar', 'timestamp', 'milk'];
 
   @Input() orderHistory: OrdersModel[] = [];
 }

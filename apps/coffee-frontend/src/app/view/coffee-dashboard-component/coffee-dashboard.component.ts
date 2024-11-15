@@ -41,7 +41,7 @@ import { ResourceValue } from '../../schema/model/resourceValue';
     MatButton,
   ],
   templateUrl: './coffee-dashboard.component.html',
-  styleUrls: ['./coffee-dashboard.component.css'],
+  styleUrls: ['./coffee-dashboard.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -168,7 +168,7 @@ export class CoffeeDashboardComponent implements OnInit {
       coffeeBean: this.getCoffeeBeanAmount(this.selectedCoffee()),
     };
     this.resourceService.useResources(payload).subscribe({
-      next: (response) => {
+      next: () => {
 
         const order = {
           coffeeType: coffee,
@@ -177,7 +177,6 @@ export class CoffeeDashboardComponent implements OnInit {
           milk:customization.milkType
         }
         this.sendOrderUpdate(order);
-        console.log('Resources used successfully:', response);
         this.checkMachineStatus();
       },
       error: (error) => {
@@ -213,7 +212,7 @@ export class CoffeeDashboardComponent implements OnInit {
     });
   }
 
-  public resetCoffeeMachine(): void{
+  public resetCoffeeMachine(): void {
     this.showDialog();
     this.step.set(0);
     this.selectedCoffee.set(null);
@@ -230,7 +229,7 @@ export class CoffeeDashboardComponent implements OnInit {
   }
 
   private showDialog():void {
-    const dialogRef = this.dialog.open(GenericDialogComponent, {
+    this.dialog.open(GenericDialogComponent, {
       data: {
         title: 'Hello there!',
         message: `Enjoy your ${this.selectedCoffee()}`,
@@ -238,10 +237,6 @@ export class CoffeeDashboardComponent implements OnInit {
         actionButtonText: 'Okay',
         showCloseButton: false
       }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog closed', result);
     });
   }
 

@@ -8,10 +8,11 @@ import { OrderHistoryComponentComponent } from '../order-history-component/order
 import { ResourceOverviewComponent } from '../resource-overview/resource-overview.component';
 import { ResourceService } from '../../services/resource.service';
 import { ResourceValue } from '../../schema/model/resourceValue';
-import { LoadResourcesDto } from '../../schema/dto/loadResourceDto';
+import { LoadResourcesDtoModel } from '../../schema/dto/loadResourceDto.model';
 import { ResourceHelperService } from '../../services/resource-helper.service';
 import { OrderService } from '../../services/order.service';
 import { Router } from '@angular/router';
+import { OrderDetailDtoModel } from '../../schema/dto/orderDetailDto.model';
 
 @Component({
   selector: 'app-admin-panel',
@@ -42,14 +43,14 @@ export class AdminPanelComponent implements OnInit {
 
   constructor(private resourceService: ResourceService, private resourceHelperService: ResourceHelperService, private orderService: OrderService, private router: Router) {}
 
-  orderHistory = signal<[]>([]);
+  public orderHistory = signal<OrderDetailDtoModel[]>([]);
 
-  logout() {
+  public logout() {
     sessionStorage.clear();
     this.router.navigate(['/dashboard']);
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.resourceService.getResources().subscribe({
       next: (response) => {
         this.resourceStatus.set(response);
@@ -62,10 +63,10 @@ export class AdminPanelComponent implements OnInit {
     this.fetchOrderHistory();
   }
 
-  fetchOrderHistory(): void {
+  private fetchOrderHistory(): void {
     this.orderService.getOrderHistory().subscribe({
       next: (response) => {
-        this.orderHistory.set(response);
+        this.orderHistory.set(Array.isArray(response) ? response : [response]);
       },
       error: (error) => {
         console.error('Error fetching order history:', error);
@@ -73,8 +74,8 @@ export class AdminPanelComponent implements OnInit {
     });
   }
 
-  onLoadResource(): void {
-    const payload: LoadResourcesDto = { // max quantity of resources and this is of course an assumption
+  public onLoadResource(): void {
+    const payload: LoadResourcesDtoModel = { // max quantity of resources and this is of course an assumption
       milk: {
         soy: 2, //liter
         almond: 2, //liter

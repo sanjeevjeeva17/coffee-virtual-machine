@@ -9,14 +9,14 @@ import { GenericCardComponent } from '../../shared/generic-card-component/generi
   standalone: true,
   imports: [CommonModule, MatButton, MatCardTitle, MatCard, GenericCardComponent],
   templateUrl: './coffee-selection.component.html',
-  styleUrls: ['./coffee-selection.component.css'],
+  styleUrls: ['./coffee-selection.component.scss'],
 })
 export class CoffeeSelectionComponent {
   @Input() coffeeOptions: string[] = [];
   @Input() selectedCoffee: string | null = null;
   @Output() coffeeSelected = new EventEmitter<string>();
 
-  onSelectCoffee(coffee: string) {
+  public onSelectCoffee(coffee: string) {
     this.selectedCoffee = coffee;
     this.coffeeSelected.emit(coffee);
   }

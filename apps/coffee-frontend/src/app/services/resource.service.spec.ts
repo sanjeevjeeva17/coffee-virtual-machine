@@ -3,8 +3,8 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { ResourceService } from './resource.service';
 import { ResourceHelperService } from './resource-helper.service';
 import { environment } from '../environment/environment';
-import { ResourceDto } from '../schema/dto/resourceDto';
-import { LoadResourcesDto } from '../schema/dto/loadResourceDto';
+import { ResourceDtoModel } from '../schema/dto/resourceDto.model';
+import { LoadResourcesDtoModel } from '../schema/dto/loadResourceDto.model';
 import { ResourceValue } from '../schema/model/resourceValue';
 
 describe('ResourceService', () => {
@@ -81,8 +81,8 @@ describe('ResourceService', () => {
     req.flush(mockResourceDto);
   });
 
-  it('should call loadResources and return ResourceDto', () => {
-    const mockLoadResourcesDto: LoadResourcesDto = {
+  it('should call loadResources and return ResourceDtoModel', () => {
+    const mockLoadResourcesDto: LoadResourcesDtoModel = {
       milk: {
         soy: 10,
         almond: 5,

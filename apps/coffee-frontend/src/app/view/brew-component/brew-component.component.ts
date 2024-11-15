@@ -8,7 +8,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
   standalone: true,
   imports: [CommonModule, MatButtonModule, MatProgressBarModule],
   templateUrl: './brew-component.component.html',
-  styleUrls: ['./brew-component.component.css']
+  styleUrls: ['./brew-component.component.scss']
 })
 export class BrewComponentComponent {
   @Output() brewingStarted = new EventEmitter<void>();
@@ -17,7 +17,7 @@ export class BrewComponentComponent {
   progress = signal<number>(0);
   hasBrewed = signal<boolean>(false);
 
-  startBrewing() {
+  public startBrewing() {
     this.brewing.set(true);
     this.hasBrewed.set(false);
     this.progress.set(0);
@@ -36,7 +36,7 @@ export class BrewComponentComponent {
   }
 
 
-  isBrewing(): boolean {
+  public isBrewing(): boolean {
     return this.brewing();
   }
 }

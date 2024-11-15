@@ -26,9 +26,9 @@ import { Router } from '@angular/router';
   providers: [AdminService]
 })
 export class LoginComponent {
-  loginForm;
-  isInvalidLogin = signal(false);
-  isLoading = signal(false);
+  public loginForm;
+  public isInvalidLogin = signal(false);
+  public isLoading = signal(false);
 
   constructor(private fb: NonNullableFormBuilder, private adminService: AdminService, private router: Router) {
     this.loginForm = this.fb.group({
@@ -37,7 +37,7 @@ export class LoginComponent {
     });
   }
 
-  onSubmit() {
+  public onSubmit() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.getRawValue();
       this.isLoading.set(true);

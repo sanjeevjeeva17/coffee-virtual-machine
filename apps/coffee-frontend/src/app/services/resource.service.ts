@@ -3,8 +3,8 @@ import { environment } from '../environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { ResourceValue } from '../schema/model/resourceValue';
-import { ResourceDto } from '../schema/dto/resourceDto';
-import { LoadResourcesDto } from '../schema/dto/loadResourceDto';
+import { ResourceDtoModel } from '../schema/dto/resourceDto.model';
+import { LoadResourcesDtoModel } from '../schema/dto/loadResourceDto.model';
 import { ResourceHelperService } from './resource-helper.service';
 
 @Injectable({
@@ -16,13 +16,13 @@ export class ResourceService {
   constructor(private http: HttpClient, private resourceHelper: ResourceHelperService) {}
 
   public getResources(): Observable<ResourceValue> {
-    return this.http.get<ResourceDto>(`${this.apiUrl}resources`).pipe(
+    return this.http.get<ResourceDtoModel>(`${this.apiUrl}resources`).pipe(
       map((resources) => this.resourceHelper.checkResourceStatus(resources))
     );
   }
 
-  public loadResources(payload: LoadResourcesDto): Observable<ResourceDto> {
-    return this.http.post<ResourceDto>(`${this.apiUrl}resources/load`, payload);
+  public loadResources(payload: LoadResourcesDtoModel): Observable<ResourceDtoModel> {
+    return this.http.post<ResourceDtoModel>(`${this.apiUrl}resources/load`, payload);
   }
 
   public useResources(payload: { [p: string]: string | number }): Observable<any> {

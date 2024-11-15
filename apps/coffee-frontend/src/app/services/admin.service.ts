@@ -10,7 +10,7 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<AuthDtoModel> {
+  public login(username: string, password: string): Observable<AuthDtoModel> {
     const loginPayload = { username, password };
     return this.http.post<AuthDtoModel>(this.apiUrl+'auth/login', loginPayload).pipe(
       tap(response => {
@@ -20,8 +20,7 @@ export class AdminService {
     );
   }
 
-  getToken(): string | null {
+  public getToken(): string | null {
     return sessionStorage.getItem('access_token');
   }
-
 }
