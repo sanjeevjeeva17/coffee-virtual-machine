@@ -1,13 +1,13 @@
-<div class="login-container">
+<div class="login-container" aria-labelledby="admin-login-header">
   <div class="login-wrapper">
-    <mat-card class="login-card">
-      <mat-card-title class="login-title">Admin Login</mat-card-title>
+    <mat-card class="login-card" role="form" aria-describedby="login-description">
+      <mat-card-title id="admin-login-header" class="login-title">Admin Login</mat-card-title>
       <mat-card-content>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" aria-live="polite">
           <mat-form-field appearance="fill" class="full-width">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="username" type="email" placeholder="Enter your email" required />
-            <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+            <input matInput formControlName="username" type="email" placeholder="Enter your email" aria-required="true" aria-describedby="email-error" />
+            <mat-error *ngIf="loginForm.get('username')?.hasError('required')" id="email-error">
               Email is required.
             </mat-error>
             <mat-error *ngIf="loginForm.get('username')?.hasError('email')">
@@ -17,8 +17,8 @@
 
           <mat-form-field appearance="fill" class="full-width">
             <mat-label>Password</mat-label>
-            <input matInput formControlName="password" type="password" placeholder="Enter your password" required />
-            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            <input matInput formControlName="password" type="password" placeholder="Enter your password" aria-required="true" aria-describedby="password-error" />
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')" id="password-error">
               Password is required.
             </mat-error>
             <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
@@ -26,9 +26,9 @@
             </mat-error>
           </mat-form-field>
 
-          <button mat-raised-button color="primary" class="full-width login-button" type="submit" [disabled]="isLoading()">
+          <button mat-raised-button color="primary" class="full-width login-button" type="submit" [disabled]="isLoading()" aria-busy="{{isLoading()}}" aria-label="Submit login form">
             <span *ngIf="!isLoading()">Login</span>
-            <mat-progress-spinner *ngIf="isLoading()" diameter="20" mode="indeterminate"></mat-progress-spinner>
+            <mat-progress-spinner *ngIf="isLoading()" diameter="20" mode="indeterminate" aria-hidden="true"></mat-progress-spinner>
           </button>
 
           <mat-error *ngIf="isInvalidLogin()" class="error-message">

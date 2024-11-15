@@ -1,7 +1,20 @@
-<div class="panel-content">
-  <p>Press the button below to start brewing your coffee.</p>
-  <button mat-raised-button color="accent" (click)="startBrewing()" [disabled]="isBrewing()">Brew</button>
-  <mat-progress-bar *ngIf="isBrewing()" mode="determinate" [value]="progress()"></mat-progress-bar>
-  <p *ngIf="isBrewing()">Brewing in progress...</p>
-  <p *ngIf="!isBrewing() && hasBrewed()">Brewing complete! Enjoy your coffee.</p>
+<div class="panel-content" aria-label="Brewing Coffee Panel">
+  <p aria-label="Brewing instructions">Press the button below to start brewing your coffee.</p>
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="startBrewing()"
+    [disabled]="isBrewing()"
+    aria-label="Brew Coffee Button"
+  >
+    Brew
+  </button>
+  <mat-progress-bar
+    *ngIf="isBrewing()"
+    mode="determinate"
+    [value]="progress()"
+    aria-label="Brewing progress"
+  ></mat-progress-bar>
+  <p *ngIf="isBrewing()" aria-live="polite" aria-label="Brewing status message">Brewing in progress...</p>
+  <p *ngIf="!isBrewing() && hasBrewed()" aria-live="polite" aria-label="Brewing complete message">Brewing complete! Enjoy your coffee.</p>
 </div>

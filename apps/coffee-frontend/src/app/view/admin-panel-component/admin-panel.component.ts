@@ -74,15 +74,15 @@ export class AdminPanelComponent implements OnInit {
   }
 
   onLoadResource(): void {
-    const payload: LoadResourcesDto = {
+    const payload: LoadResourcesDto = { // max quantity of resources and this is of course an assumption
       milk: {
-        soy: 2,
-        almond: 2,
-        whole: 2,
-        skimmed: 2,
+        soy: 2, //liter
+        almond: 2, //liter
+        whole: 2, //liter
+        skimmed: 2, //liter
       },
-      sugar: 1,
-      coffeeBean: 1
+      sugar: 1, //kilogram
+      coffeeBean: 1 //kilogram
     };
 
     this.resourceService.loadResources(payload).subscribe({

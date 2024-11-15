@@ -1,12 +1,20 @@
 <div class="admin-header">
-  <mat-toolbar color="primary">
-    <span class="admin-title">Admin Panel</span>
+  <mat-toolbar color="primary" aria-label="Admin Panel Toolbar">
+    <span class="admin-title" aria-label="Admin Panel Title">Admin Panel</span>
     <span class="flex-spacer"></span>
-    <button mat-button color="accent" (click)="logout()">Logout</button>
+    <button mat-button color="accent" (click)="logout()" aria-label="Logout Button">Logout</button>
   </mat-toolbar>
 </div>
 
-<div class="admin-container">
-    <app-resource-overview [resources]="resourceStatus()" (loadResourcesEvent)="onLoadResource()"></app-resource-overview>
-    <app-order-history-component [orderHistory]="orderHistory()"></app-order-history-component>
+<div class="admin-container" aria-labelledby="resource-overview order-history">
+  <app-resource-overview
+    [resources]="resourceStatus()"
+    (loadResourcesEvent)="onLoadResource()"
+    aria-label="Resource Overview Section">
+  </app-resource-overview>
+
+  <app-order-history-component
+    [orderHistory]="orderHistory()"
+    aria-label="Order History Section">
+  </app-order-history-component>
 </div>

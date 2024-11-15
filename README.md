@@ -43,3 +43,69 @@ Admins can service the machine by loading resources and viewing the order histor
 
 - **Username**: `admin1@example.com`
 - **Password**: `password1`
+
+Admins can add resources in the admin panel by clicking the **Load Resource** button. This sends a predefined maximum quantity of ingredients to the backend via API calls, as seen in the `onLoadResource` method of `admin-panel.component.ts`.
+
+## API Overview
+### Resource Management:
+- **Get Resources**:
+  - `GET http://localhost:3000/api/resources`
+- **Load Resources to Machine**:
+  - `POST http://localhost:3000/api/resources/load`
+  - **Payload**:
+    ```json
+    {
+      "milk": {
+        "soy": 2,
+        "almond": 2,
+        "whole": 2,
+        "skimmed": 2
+      },
+      "sugar": 1,
+      "coffeeBean": 1
+    }
+    ```
+
+### Coffee Brewing:
+- **Use Resources After Brewing**:
+  - `PATCH http://localhost:3000/api/resources/use`
+  - **Payload**:
+    ```json
+    {
+      "almond": 0.45,
+      "soy": 0,
+      "whole": 0,
+      "skimmed": 0,
+      "sugar": 0.3,
+      "coffeeBean": 0
+    }
+    ```
+
+### Order Management:
+- **Update Order History**:
+  - `POST http://localhost:3000/api/orders`
+  - **Payload**:
+    ```json
+    {
+      "coffeeType": "Latte",
+      "size": "Medium",
+      "sugar": "",
+      "milk": ""
+    }
+    ```
+
+### Authentication:
+- **Admin Login**:
+  - `POST http://localhost:3000/api/auth/login`
+  - **Payload**:
+    ```json
+    {
+      "username": "admin1@example.com",
+      "password": "*******"
+    }
+    ```
+
+## TODO:
+1. Fix backend authorization validation to ensure the admin API cannot be used without proper authorization.
+2. Implement localization to support multiple languages for the application.
+3. Add theme implementation to allow users to switch between different UI themes.

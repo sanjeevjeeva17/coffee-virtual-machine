@@ -1,27 +1,55 @@
-<div class="container">
-  <div class="admin-login">
-    <button mat-raised-button color="accent" (click)="onAdminLogin()">
+<div class="container" aria-label="Coffee Machine Interface">
+  <div class="admin-login" aria-label="Admin Login Section">
+    <button
+      mat-raised-button
+      color="accent"
+      [disabled]="isPreviousButtonDisabled()"
+      (click)="onAdminLogin()"
+      aria-label="Admin Login Button"
+    >
       Admin Login
     </button>
   </div>
 
-  <mat-accordion class="coffee-dashboard-accordion">
-    <mat-expansion-panel [expanded]="step() === 0" (opened)="setStep(0)" hideToggle>
+  <mat-accordion class="coffee-dashboard-accordion" aria-label="Coffee Dashboard Steps">
+    <mat-expansion-panel
+      [expanded]="step() === 0"
+      (opened)="setStep(0)"
+      hideToggle
+      aria-label="Start Coffee Machine Panel"
+    >
       <mat-expansion-panel-header>
         <mat-panel-title> Start Coffee Machine </mat-panel-title>
         <mat-panel-description> Check machine status </mat-panel-description>
       </mat-expansion-panel-header>
-      <div class="panel-content" [ngClass]="machineStatus() === 'Machine is ready' ? 'machine-ready' : 'machine-not-ready'">
-        <mat-icon class="status-icon">
+      <div
+        class="panel-content"
+        [ngClass]="machineStatus() === 'Machine is ready' ? 'machine-ready' : 'machine-not-ready'"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <mat-icon class="status-icon" aria-hidden="true">
           {{ machineStatus() === 'Machine is ready' ? 'check_circle' : 'highlight_off' }}
         </mat-icon>
-        <span class="status-text">{{ machineStatus() }}</span>
-        <button mat-raised-button color="primary" (click)="nextStep()" [disabled]="machineStatus() !== 'Machine is ready'">Start Machine</button>
+        <span class="status-text" aria-label="Machine Status: {{ machineStatus() }}">{{ machineStatus() }}</span>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="nextStep()"
+          [disabled]="machineStatus() !== 'Machine is ready'"
+          aria-label="Start Machine Button"
+        >
+          Start Machine
+        </button>
       </div>
-
     </mat-expansion-panel>
 
-    <mat-expansion-panel [expanded]="step() === 1" (opened)="setStep(1)" hideToggle>
+    <mat-expansion-panel
+      [expanded]="step() === 1"
+      (opened)="setStep(1)"
+      hideToggle
+      aria-label="Select Your Coffee Panel"
+    >
       <mat-expansion-panel-header>
         <mat-panel-title> Select Your Coffee </mat-panel-title>
         <mat-panel-description> Choose your coffee type </mat-panel-description>
@@ -30,36 +58,57 @@
         [coffeeOptions]="coffeeOptions"
         [selectedCoffee]="selectedCoffee()"
         (coffeeSelected)="handleCoffeeSelection($event)"
+        aria-label="Coffee Selection Component"
       ></app-coffee-selection>
-      <div class="panel-footer">
-        <button mat-button (click)="previousStep()">Previous</button>
+      <div class="panel-footer" aria-label="Navigation Buttons">
+        <button mat-button (click)="previousStep()" aria-label="Previous Step Button">Previous</button>
       </div>
     </mat-expansion-panel>
 
-    <mat-expansion-panel [expanded]="step() === 2" (opened)="setStep(2)" hideToggle>
+    <mat-expansion-panel
+      [expanded]="step() === 2"
+      (opened)="setStep(2)"
+      hideToggle
+      aria-label="Customize Your Coffee Panel"
+    >
       <mat-expansion-panel-header>
         <mat-panel-title> Customize Your Coffee </mat-panel-title>
         <mat-panel-description> Adjust preferences </mat-panel-description>
       </mat-expansion-panel-header>
       <app-customization-component
         [customizationOptions]="customizationOptions"
-        (allOptionsSelected)="handleCustomization($event)">
-      </app-customization-component>
-
-      <div class="panel-footer">
-        <button mat-button (click)="previousStep()">Previous</button>
+        (allOptionsSelected)="handleCustomization($event)"
+        aria-label="Customization Component"
+      ></app-customization-component>
+      <div class="panel-footer" aria-label="Navigation Buttons">
+        <button mat-button (click)="previousStep()" aria-label="Previous Step Button">Previous</button>
       </div>
     </mat-expansion-panel>
 
-    <mat-expansion-panel [expanded]="step() === 3" (opened)="setStep(3)" hideToggle>
+    <mat-expansion-panel
+      [expanded]="step() === 3"
+      (opened)="setStep(3)"
+      hideToggle
+      aria-label="Brew Your Coffee Panel"
+    >
       <mat-expansion-panel-header>
         <mat-panel-title> Brew Your Coffee </mat-panel-title>
         <mat-panel-description> Start brewing </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-brew-component (brewingStarted)="handleBrewingStarted()"
-                          (brewingCompleted)="resetCoffeeMachine()"></app-brew-component>
-      <div class="panel-footer">
-        <button mat-button [disabled]="isPreviousButtonDisabled()" (click)="previousStep()">Previous</button>
+      <app-brew-component
+        (brewingStarted)="handleBrewingStarted()"
+        (brewingCompleted)="resetCoffeeMachine()"
+        aria-label="Brewing Component"
+      ></app-brew-component>
+      <div class="panel-footer" aria-label="Navigation Buttons">
+        <button
+          mat-button
+          [disabled]="isPreviousButtonDisabled()"
+          (click)="previousStep()"
+          aria-label="Previous Step Button"
+        >
+          Previous
+        </button>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

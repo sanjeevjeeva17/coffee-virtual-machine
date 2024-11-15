@@ -1,10 +1,11 @@
-<div *ngIf="coffeeOptions.length > 0;" class="coffee-container">
-  <div *ngFor="let coffee of coffeeOptions" class="coffee-card">
-      <app-generic-card
-        [title]="coffee"
-        [selected]="selectedCoffee === coffee"
-        (cardSelected)="onSelectCoffee(coffee)"
-      ></app-generic-card>
-    </div>
+<div *ngIf="coffeeOptions.length > 0;" class="coffee-container" aria-label="Coffee Options Container">
+  <div *ngFor="let coffee of coffeeOptions" class="coffee-card" aria-label="Coffee Option Card">
+    <app-generic-card
+      [title]="coffee"
+      [selected]="selectedCoffee === coffee"
+      (cardSelected)="onSelectCoffee(coffee)"
+      aria-label="Select {{ coffee }} card"
+      role="button"
+    ></app-generic-card>
+  </div>
 </div>
-
