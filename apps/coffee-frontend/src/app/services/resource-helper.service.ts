@@ -4,12 +4,13 @@ import { Injectable } from '@angular/core';
 
 
 @Injectable({
-  providedIn: 'root', // Ensure the service is provided at the root level
+  providedIn: 'root',
 })
 export class ResourceHelperService {
+ // max values for the coffee machine
 private maxValues = {
-    milkTypes: 2, // Maximum capacity in liters for all types of milk
-    sugar: 1, // Maximum capacity in kilograms for sugar
+    milkTypes: 2,
+    sugar: 1,
     coffeeBean: 1
   };
 

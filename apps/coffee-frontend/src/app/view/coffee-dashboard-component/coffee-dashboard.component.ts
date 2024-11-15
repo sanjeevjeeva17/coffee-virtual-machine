@@ -23,6 +23,7 @@ import { ResourceService } from '../../services/resource.service';
 import { MatDialog } from '@angular/material/dialog';
 import { GenericDialogComponent } from '../../shared/generic-dialog-component/generic-dialog.component';
 import { OrderService } from '../../services/order.service';
+import { ResourceValue } from '../../schema/model/resourceValue';
 
 @Component({
   selector: 'app-coffee-dashboard',
@@ -49,11 +50,11 @@ import { OrderService } from '../../services/order.service';
 export class CoffeeDashboardComponent implements OnInit {
   @ViewChild(CustomizationComponentComponent) customizationComponent!: CustomizationComponentComponent;
 
-  step = signal<number>(0);
-  machineStatus = signal<string>('Checking resources...');
-  coffeeOptions = ['Espresso', 'Latte', 'Cappuccino', 'Americano', 'Make Your Own Coffee'];
-  selectedCoffee = signal<string | null>(null);
-  customizationData = signal<{
+  public step = signal<number>(0);
+  public machineStatus = signal<string>('Checking resources...');
+  public coffeeOptions = ['Espresso', 'Latte', 'Cappuccino', 'Americano', 'Make Your Own Coffee'];
+  public selectedCoffee = signal<string | null>(null);
+  public customizationData = signal<{
     milkType: string;
     cupSize: string;
     sugarLevel: string;
@@ -67,43 +68,39 @@ export class CoffeeDashboardComponent implements OnInit {
     sugarAmount: '0',
   });
 
-  // Add this property
-  customizationOptions = [
+  public customizationOptions = [
     { title: 'Milk Type', choices: ['Whole', 'Skim', 'Soy', 'Almond'] },
     { title: 'Cup Size', choices: ['Small', 'Medium', 'Large'] },
     { title: 'Sugar Level', choices: ['None', 'Low', 'Medium', 'High'] },
   ];
-  showMilkType = signal<boolean>(true);
-  isPreviousButtonDisabled = signal<boolean>(false);
+  public showMilkType = signal<boolean>(true);
+  public isPreviousButtonDisabled = signal<boolean>(false);
 
   constructor(private resourceService: ResourceService, private dialog: MatDialog, private router: Router, private orderService: OrderService) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.checkMachineStatus();
   }
 
-  setStep(index: number): void {
+  public setStep(index: number): void {
     this.step.set(index);
   }
 
-  nextStep(): void {
+  public nextStep(): void {
     this.step.set(this.step() + 1);
   }
 
-  previousStep(): void {
+  public previousStep(): void {
     if (this.step() > 0) {
       this.step.set(this.step() - 1);
     }
   }
 
-  checkMachineStatus(): void {
+  public checkMachineStatus(): void {
     this.resourceService.getResources().subscribe({
-      next: (response) => {
-        const allResourcesAvailable = Object.entries(response).every(([key, value]) => {
-          if (key === 'message') return true;
-          return typeof value === 'number' && value > 10;
-        });
-        this.machineStatus.set(allResourcesAvailable ? 'Machine is ready' : 'resources are not available wait until serviced');
+      next: (response:ResourceValue) => {
+
+        this.machineStatus.set(this.isEnoughResource(response) ? 'Machine is ready' : 'resources are not available wait until serviced');
       },
       error: (error) => {
         console.error('Error fetching resources:', error);
@@ -119,7 +116,7 @@ export class CoffeeDashboardComponent implements OnInit {
   }
 
 
-  handleCoffeeSelection(coffee: string): void {
+  public handleCoffeeSelection(coffee: string): void {
     this.selectedCoffee.set(coffee);
     if (coffee === 'Espresso' || coffee === 'Americano') {
       this.customizationOptions = this.customizationOptions.filter(option => option.title !== 'Milk Type');
@@ -133,12 +130,10 @@ export class CoffeeDashboardComponent implements OnInit {
         this.showMilkType.set(true);
       }
     }
-
-    console.log(`Selected coffee type: ${coffee}`);
     this.nextStep();
   }
 
-  handleCustomization(coffeeData: { [key: string]: string | number }): void {
+  public handleCustomization(coffeeData: { [key: string]: string | number }): void {
     this.customizationData.update((currentData) => {
       if (coffeeData['Milk Type'] !== undefined) {
         currentData.milkType = coffeeData['Milk Type'] as string;
@@ -155,15 +150,12 @@ export class CoffeeDashboardComponent implements OnInit {
         currentData.milkType = 'No Milk';
         currentData.milkAmount = '0';
       }
-
-      console.log('Updated customization data:', JSON.stringify(currentData));
-
       return currentData;
     });
     this.nextStep();
   }
 
-  handleBrewingStarted(): void {
+  public handleBrewingStarted(): void {
     this.isPreviousButtonDisabled.set(true);
     const customization = this.customizationData();
     const coffee = this.selectedCoffee();
@@ -209,18 +201,19 @@ export class CoffeeDashboardComponent implements OnInit {
     }
   }
 
-  onAdminLogin(): void {
+  public onAdminLogin(): void {
     this.router.navigate(['/login']);
   }
 
-  sendOrderUpdate(orderDetails: any): void {
+  private sendOrderUpdate(orderDetails: any): void {
     this.orderService.createOrder(orderDetails).subscribe({
       next: (response) => {
         console.log('order updated successfully', response)
       }
     });
   }
-  resetCoffeeMachine(): void{
+
+  public resetCoffeeMachine(): void{
     this.showDialog();
     this.step.set(0);
     this.selectedCoffee.set(null);
@@ -237,7 +230,6 @@ export class CoffeeDashboardComponent implements OnInit {
   }
 
   private showDialog():void {
-
     const dialogRef = this.dialog.open(GenericDialogComponent, {
       data: {
         title: 'Hello there!',
@@ -250,6 +242,13 @@ export class CoffeeDashboardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog closed', result);
+    });
+  }
+
+  private isEnoughResource(response:ResourceValue): boolean {
+    return Object.entries(response).every(([key, value]) => {
+      if (key === 'message') return true;
+      return typeof value === 'number' && value > 10; // this is for checking if we have enough resource
     });
   }
 }

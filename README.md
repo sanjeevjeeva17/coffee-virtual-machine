@@ -1,82 +1,45 @@
-# CoffeeVirtualMachine
+# Coffee Virtual Machine
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+This web application provides a virtual user experience of using a coffee machine and servicing it as an admin who can also view the order history.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+## Tech Stack
+### Frontend
+- Angular 18
+- Angular Material
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+### Backend
+- Node.js
+- Nest.js
 
-## Finish your CI setup
+### Monorepo
+- Nx Monorepo
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/qNqFXaxd1U)
+## Running the Application
+### Steps:
+1. Run `npm install` to install the necessary dependencies.
+2. To start the frontend, use `npm run start:frontend`.
+3. To start the backend, use `npm run start:backend`.
 
+**Optional**: Install `concurrently` using `npm install concurrently` and then run `npm run start` to start both the frontend and backend simultaneously.
 
-## Run tasks
+## About the Application
+### Overview:
+There are three main steps in using the coffee machine:
+1. **Starting the Machine**: The machine can be started only when all the necessary resources are available. The application makes an API call to fetch the resources, allowing the machine to use them for serving users with coffee.
 
-To run the dev server for your app, use:
+**Note**: When running the application for the first time, resources need to be loaded. To simulate this real-life scenario, log in as an admin, load the resources, and then navigate to the `/dashboard` route (e.g., `https://localhost:4200/dashboard`). The machine will then be ready for use.
 
-```sh
-npx nx serve coffee-frontend
-```
+### Types of Coffee and Their Ingredients (Assuming there is a water connection):
+- **Espresso**: Coffee beans, sugar, and cup size.
+- **Latte**: Coffee beans, milk, sugar, and cup size.
+- **Cappuccino**: Coffee beans, milk, sugar, and cup size.
+- **Americano**: Coffee beans, hot water, sugar, and cup size.
+- **Make Your Own**: Custom combination of coffee beans, milk, sugar, and cup size.
 
-To create a production bundle:
+**Note**: Although cappuccino and latte may seem similar, the amount of coffee beans used is different.
 
-```sh
-npx nx build coffee-frontend
-```
+### Admin Features:
+Admins can service the machine by loading resources and viewing the order history. To access these features, log in using the following credentials:
 
-To see all available targets to run for a project, run:
-
-```sh
-npx nx show project coffee-frontend
-```
-
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/angular:app demo
-```
-
-To generate a new library, use:
-
-```sh
-npx nx g @nx/angular:lib mylib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- **Username**: `admin1@example.com`
+- **Password**: `password1`

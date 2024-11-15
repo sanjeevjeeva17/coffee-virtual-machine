@@ -8,7 +8,8 @@
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "build:frontend": "nx build coffee-frontend",
     "build:backend": "nx build coffee-backend",
-    "build": "npm run build:frontend && npm run build:backend"
+    "build": "npm run build:frontend && npm run build:backend",
+    "tests": "npx jest"
   },
   "private": true,
   "dependencies": {

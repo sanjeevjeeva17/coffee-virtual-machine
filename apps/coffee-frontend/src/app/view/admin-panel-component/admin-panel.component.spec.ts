@@ -4,7 +4,6 @@ import { ResourceService } from '../../services/resource.service';
 import { ResourceHelperService } from '../../services/resource-helper.service';
 import { OrderService } from '../../services/order.service';
 import { Router } from '@angular/router';
-import { of, throwError } from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';

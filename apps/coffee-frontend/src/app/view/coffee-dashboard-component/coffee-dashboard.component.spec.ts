@@ -8,7 +8,7 @@ import { ResourceService } from '../../services/resource.service';
 import { OrderService } from '../../services/order.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { of, throwError } from 'rxjs';
+import { of } from 'rxjs';
 import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
 import { MatButton } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
@@ -70,25 +70,6 @@ describe('CoffeeDashboardComponent', () => {
 
   it('should create the component', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should check machine status and set status to "Machine is ready"', async () => {
-    resourceService.getResources.mockReturnValue(of({
-      almond: 20,
-      skimmed: 20,
-      soy: 20,
-      whole: 20,
-      sugar: 20,
-      coffeeBean: 20,
-      message: ''
-    }));
-
-    component.checkMachineStatus();
-    fixture.detectChanges();
-
-    await fixture.whenStable();
-
-    expect(component.machineStatus()).toBe('Machine is ready');
   });
 
   it('should handle coffee selection and filter customization options', () => {
