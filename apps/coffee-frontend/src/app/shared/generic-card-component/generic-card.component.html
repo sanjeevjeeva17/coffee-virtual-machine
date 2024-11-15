@@ -6,7 +6,7 @@
   (keydown)="handleCardKeyDown($event)"
   [attr.aria-pressed]="selected ? 'true' : 'false'"
   role="button"
-  aria-label="Choice card {{ title }}"
+  [attr.aria-label]="'Choice card ' + title"
 >
   <mat-card-title>{{ title }}</mat-card-title>
 </mat-card>

@@ -4,7 +4,7 @@
       [title]="coffee"
       [selected]="selectedCoffee === coffee"
       (cardSelected)="onSelectCoffee(coffee)"
-      aria-label="Select {{ coffee }} card"
+      [attr.aria-label]="'Select {{ coffee }} card'"
       role="button"
     ></app-generic-card>
   </div>

@@ -1,41 +1,41 @@
-<h2 tabindex="0" aria-label="Order History">Order History</h2>
+<h2 tabindex="0" [attr.aria-label]="'Order History'">Order History</h2>
 <div class="table-container">
-  <table mat-table [dataSource]="orderHistory" class="mat-elevation-z8" role="grid" aria-label="Order History Table">
+  <table mat-table [dataSource]="orderHistory" class="mat-elevation-z8" role="grid" [attr.aria-label]="'Order History Table'">
 
     <!-- ID Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef tabindex="0" scope="col" aria-label="ID Column Header"> ID </th>
-      <td mat-cell *matCellDef="let order" tabindex="0" aria-label="Order ID {{ order.id }}"> {{ order.id }} </td>
+      <th mat-header-cell *matHeaderCellDef tabindex="0" scope="col" [attr.aria-label]="'ID Column Header'"> ID </th>
+      <td mat-cell *matCellDef="let order" tabindex="0" [attr.aria-label]="'Order ID ' + order.id"> {{ order.id }} </td>
     </ng-container>
 
     <!-- Coffee Type Column -->
     <ng-container matColumnDef="coffeeType">
-      <th mat-header-cell *matHeaderCellDef tabindex="0" scope="col" aria-label="Coffee Type Column Header"> Coffee Type </th>
-      <td mat-cell *matCellDef="let order" tabindex="0" aria-label="Coffee Type {{ order.coffeeType }}"> {{ order.coffeeType }} </td>
+      <th mat-header-cell *matHeaderCellDef tabindex="0" scope="col" [attr.aria-label]="'Coffee Type Column Header'"> Coffee Type </th>
+      <td mat-cell *matCellDef="let order" tabindex="0" [attr.aria-label]="'Coffee Type ' + order.coffeeType"> {{ order.coffeeType }} </td>
     </ng-container>
 
     <!-- Size Column -->
     <ng-container matColumnDef="size">
-      <th mat-header-cell *matHeaderCellDef tabindex="0" scope="col" aria-label="Size Column Header"> Size </th>
-      <td mat-cell *matCellDef="let order" tabindex="0" aria-label="Size {{ order.size }}"> {{ order.size }} </td>
+      <th mat-header-cell *matHeaderCellDef tabindex="0" scope="col" [attr.aria-label]="'Size Column Header'"> Size </th>
+      <td mat-cell *matCellDef="let order" tabindex="0" [attr.aria-label]="'Size ' + order.size"> {{ order.size }} </td>
     </ng-container>
 
     <!-- Sugar Column -->
     <ng-container matColumnDef="sugar">
-      <th mat-header-cell *matHeaderCellDef tabindex="0" scope="col" aria-label="Sugar Column Header"> Sugar </th>
-      <td mat-cell *matCellDef="let order" tabindex="0" aria-label="Sugar {{ order.sugar || 'None' }}"> {{ order.sugar || 'None' }} </td>
+      <th mat-header-cell *matHeaderCellDef tabindex="0" scope="col" [attr.aria-label]="'Sugar Column Header'"> Sugar </th>
+      <td mat-cell *matCellDef="let order" tabindex="0" [attr.aria-label]="'Sugar ' + (order.sugar || 'None')"> {{ order.sugar || 'None' }} </td>
     </ng-container>
 
     <!-- Timestamp Column -->
     <ng-container matColumnDef="timestamp">
-      <th mat-header-cell *matHeaderCellDef tabindex="0" scope="col" aria-label="Timestamp Column Header"> Timestamp </th>
-      <td mat-cell *matCellDef="let order" tabindex="0" aria-label="Timestamp {{ order.timestamp | date:'short' }}"> {{ order.timestamp | date:'short' }} </td>
+      <th mat-header-cell *matHeaderCellDef tabindex="0" scope="col" [attr.aria-label]="'Timestamp Column Header'"> Timestamp </th>
+      <td mat-cell *matCellDef="let order" tabindex="0" [attr.aria-label]="'Timestamp ' + (order.timestamp | date:'short')"> {{ order.timestamp | date:'short' }} </td>
     </ng-container>
 
     <!-- Milk Column -->
     <ng-container matColumnDef="milk">
-      <th mat-header-cell *matHeaderCellDef tabindex="0" scope="col" aria-label="Milk Column Header"> Milk </th>
-      <td mat-cell *matCellDef="let order" tabindex="0" aria-label="Milk {{ order.milk || 'No Milk' }}"> {{ order.milk || 'No Milk' }} </td>
+      <th mat-header-cell *matHeaderCellDef tabindex="0" scope="col" [attr.aria-label]="'Milk Column Header'"> Milk </th>
+      <td mat-cell *matCellDef="let order" tabindex="0" [attr.aria-label]="'Milk ' + (order.milk || 'No Milk')"> {{ order.milk || 'No Milk' }} </td>
     </ng-container>
 
     <!-- Header and Row Declarations -->

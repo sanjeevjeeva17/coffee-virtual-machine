@@ -1,12 +1,12 @@
-<div *ngFor="let option of customizationOptions" class="customization-category" aria-labelledby="{{ option.title }}-label">
+<div *ngFor="let option of customizationOptions" class="customization-category" [attr.aria-labelledby]="'{{ option.title }}-label'">
   <h3 id="{{ option.title }}-label">{{ option.title }}</h3>
-  <div class="choice-container" aria-label="Choices for {{ option.title }}">
+  <div class="choice-container" [attr.aria-label]="'Choices for {{ option.title }}'">
     <app-generic-card
       *ngFor="let choice of option.choices"
       [title]="choice"
       [selected]="selectedOptions[option.title] === choice"
       (cardSelected)="onSelectOption(option.title, choice)"
-      aria-label="Select {{ choice }} for {{ option.title }}"
+      [attr.aria-label]="'Select {{ choice }} for {{ option.title }}'"
       role="button"
     ></app-generic-card>
   </div>

@@ -31,7 +31,7 @@
         <mat-icon class="status-icon" aria-hidden="true">
           {{ machineStatus() === 'Machine is ready' ? 'check_circle' : 'highlight_off' }}
         </mat-icon>
-        <span class="status-text" aria-label="Machine Status: {{ machineStatus() }}">{{ machineStatus() }}</span>
+        <span class="status-text" [attr.aria-label]="'Machine Status: {{ machineStatus() }}'">{{ machineStatus() }}</span>
         <button
           mat-raised-button
           color="primary"
