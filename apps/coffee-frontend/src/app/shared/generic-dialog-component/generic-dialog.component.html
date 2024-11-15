@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>
+  <ng-container *ngIf="data.message">
+    <p>{{ data.message }}</p>
+  </ng-container>
+  <ng-container *ngIf="data.showProgress">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </ng-container>
+</div>
+<div mat-dialog-actions *ngIf="data.showActionButton">
+  <button  *ngIf="data.showCloseButton" mat-button (click)="close()">Close</button>
+  <button *ngIf="data.actionButtonText" mat-raised-button color="primary" (click)="onAction()">
+    {{ data.actionButtonText }}
+  </button>
+</div>

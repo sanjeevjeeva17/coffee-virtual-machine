@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import 'theme.scss'; // Make sure this path is correct based on your project structure
+
+// Add any additional global styles here
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.customization-category {
+  margin-bottom: 30px;
+}
+
+.choice-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.choice-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.choice-card:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 64, 129, 0.5);
+}
+
+.selected-card {
+  border: 2px solid #ff4081;
+  box-shadow: 0 0 15px rgba(255, 64, 129, 0.5);
+}

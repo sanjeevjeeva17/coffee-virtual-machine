@@ -1,0 +1,65 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5; /* Light background */
+  padding: 20px;
+}
+
+.login-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-card {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  border-radius: 12px; /* Rounded corners */
+  padding: 30px; /* More padding for better spacing */
+}
+
+.login-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mat-form-field {
+  margin-bottom: 25px; /* Space between input fields */
+  width: 100%; /* Ensure the field takes full width */
+}
+
+.mat-form-field-wrapper {
+  padding-top: 8px; /* Ensure label is fully visible */
+  padding-bottom: 8px; /* Add padding for better spacing */
+}
+
+.mat-form-field-infix {
+  min-height: 64px; /* Increase input field height */
+}
+
+.mat-input-element {
+  font-size: 1rem; /* Ensure input text is readable */
+  padding: 12px 14px; /* Add padding for better spacing */
+}
+
+.mat-form-field-label {
+  font-size: 1rem;
+  line-height: 1.2; /* Adjust line-height for better alignment */
+}
+
+.login-button {
+  margin-top: 20px; /* Space above button */
+  padding: 12px 0; /* Adjust button padding */
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.9rem; /* Ensure error message is readable */
+}

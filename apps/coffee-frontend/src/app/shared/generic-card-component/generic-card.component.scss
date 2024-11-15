@@ -1,0 +1,20 @@
+.choice-card {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+mat-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.selected-card {
+  border: 2px solid #00796b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

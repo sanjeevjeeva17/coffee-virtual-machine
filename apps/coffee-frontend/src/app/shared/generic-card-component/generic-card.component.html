@@ -1,0 +1,9 @@
+<mat-card class="choice-card"
+  [ngClass]="{ 'selected-card': selected }"
+  tabindex="0"
+  (click)="onCardClick()"
+  (keydown)="handleCardKeyDown($event)"
+>
+  <mat-card-title>{{ title }}</mat-card-title>
+</mat-card>
+

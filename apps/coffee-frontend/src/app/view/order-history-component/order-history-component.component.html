@@ -1,0 +1,45 @@
+<h2 tabindex="0">Order History</h2>
+<div class="table-container">
+  <table mat-table [dataSource]="orderHistory" class="mat-elevation-z8">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef tabindex="0"> ID </th>
+      <td mat-cell *matCellDef="let order" tabindex="0"> {{ order.id }} </td>
+    </ng-container>
+
+    <!-- Coffee Type Column -->
+    <ng-container matColumnDef="coffeeType">
+      <th mat-header-cell *matHeaderCellDef tabindex="0"> Coffee Type </th>
+      <td mat-cell *matCellDef="let order" tabindex="0"> {{ order.coffeeType }} </td>
+    </ng-container>
+
+    <!-- Size Column -->
+    <ng-container matColumnDef="size">
+      <th mat-header-cell *matHeaderCellDef tabindex="0"> Size </th>
+      <td mat-cell *matCellDef="let order" tabindex="0"> {{ order.size }} </td>
+    </ng-container>
+
+    <!-- Sugar Column -->
+    <ng-container matColumnDef="sugar">
+      <th mat-header-cell *matHeaderCellDef tabindex="0"> Sugar </th>
+      <td mat-cell *matCellDef="let order" tabindex="0"> {{ order.sugar || 'None' }} </td>
+    </ng-container>
+
+    <!-- Timestamp Column -->
+    <ng-container matColumnDef="timestamp">
+      <th mat-header-cell *matHeaderCellDef tabindex="0"> Timestamp </th>
+      <td mat-cell *matCellDef="let order" tabindex="0"> {{ order.timestamp | date:'short' }} </td>
+    </ng-container>
+
+    <!-- Milk Column -->
+    <ng-container matColumnDef="milk">
+      <th mat-header-cell *matHeaderCellDef tabindex="0"> Milk </th>
+      <td mat-cell *matCellDef="let order" tabindex="0"> {{ order.milk || 'No Milk' }} </td>
+    </ng-container>
+
+    <!-- Header and Row Declarations -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

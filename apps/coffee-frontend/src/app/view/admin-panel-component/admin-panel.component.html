@@ -1,0 +1,12 @@
+<div class="admin-header">
+  <mat-toolbar color="primary">
+    <span class="admin-title">Admin Panel</span>
+    <span class="flex-spacer"></span>
+    <button mat-button color="accent" (click)="logout()">Logout</button>
+  </mat-toolbar>
+</div>
+
+<div class="admin-container">
+    <app-resource-overview [resources]="resourceStatus()" (loadResourcesEvent)="onLoadResource()"></app-resource-overview>
+    <app-order-history-component [orderHistory]="orderHistory()"></app-order-history-component>
+</div>

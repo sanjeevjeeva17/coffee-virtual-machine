@@ -1,0 +1,20 @@
+
+@use "@angular/material" as mat;
+
+// Include the core styles for Angular Material
+@include mat.core();
+
+$light-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$cyan-palette,
+  ),
+));
+
+// Apply the default theme (e.g., light theme)
+html {
+  @include mat.core-theme($light-theme);
+  @include mat.button-theme($light-theme);
+  @include mat.expansion-theme($light-theme);
+  @include mat.all-component-themes($light-theme);
+}

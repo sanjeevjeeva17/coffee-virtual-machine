@@ -1,0 +1,55 @@
+<mat-card-title tabindex="0">Resources Overview</mat-card-title>
+<p tabindex="0">{{ resources.message }}</p>
+<div class="resources-list">
+  <mat-progress-bar
+    mode="determinate"
+    [value]="resources.almond"
+    aria-labelledby="almondLabel"
+    tabindex="0"
+  ></mat-progress-bar>
+  <div id="almondLabel" tabindex="0">Almond Milk: {{ resources.almond | number: '1.0-2' }}%</div>
+
+  <mat-progress-bar
+    mode="determinate"
+    [value]="resources.skimmed"
+    aria-labelledby="skimmedLabel"
+    tabindex="0"
+  ></mat-progress-bar>
+  <div id="skimmedLabel" tabindex="0">Skimmed Milk: {{ resources.skimmed | number: '1.0-2' }}%</div>
+
+  <mat-progress-bar
+    mode="determinate"
+    [value]="resources.soy"
+    aria-labelledby="soyLabel"
+    tabindex="0"
+  ></mat-progress-bar>
+  <div id="soyLabel" tabindex="0">Soy Milk: {{ resources.soy | number: '1.0-2' }}%</div>
+
+  <mat-progress-bar
+    mode="determinate"
+    [value]="resources.whole"
+    aria-labelledby="wholeLabel"
+    tabindex="0"
+  ></mat-progress-bar>
+  <div id="wholeLabel" tabindex="0">Whole Milk: {{ resources.whole | number: '1.0-2' }}%</div>
+
+  <mat-progress-bar
+    mode="determinate"
+    [value]="resources.sugar"
+    aria-labelledby="sugarLabel"
+    tabindex="0"
+  ></mat-progress-bar>
+  <div id="sugarLabel" tabindex="0">Sugar: {{ resources.sugar | number: '1.0-2' }}%</div>
+
+  <mat-progress-bar
+    mode="determinate"
+    [value]="resources.coffeeBean"
+    aria-labelledby="coffeeBeanLabel"
+    tabindex="0"
+  ></mat-progress-bar>
+  <div id="coffeeBeanLabel" tabindex="0">Coffee Bean: {{ resources.coffeeBean | number: '1.0-2' }}%</div>
+</div>
+
+<button mat-raised-button color="primary" (click)="loadResources()" aria-label="Load Resources" tabindex="0">
+  Load Resources
+</button>

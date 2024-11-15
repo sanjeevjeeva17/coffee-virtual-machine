@@ -1,0 +1,11 @@
+<div *ngFor="let option of customizationOptions" class="customization-category">
+  <h3>{{ option.title }}</h3>
+  <div class="choice-container">
+    <app-generic-card
+      *ngFor="let choice of option.choices"
+      [title]="choice"
+      [selected]="selectedOptions[option.title] === choice"
+      (cardSelected)="onSelectOption(option.title, choice)"
+    ></app-generic-card>
+  </div>
+</div>

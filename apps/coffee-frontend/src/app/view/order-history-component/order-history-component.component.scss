@@ -1,0 +1,29 @@
+.order-history-container {
+  padding: 20px;
+}
+
+.table-container {
+  height: 400px; /* Set a fixed height as per your needs */
+  overflow-y: auto; /* Allow vertical scrolling for content */
+  border: 1px solid #e0e0e0; /* Optional: Add a border to the container for visibility */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+.mat-header-row,
+.mat-row {
+  display: table;
+  width: 100%;
+  table-layout: fixed; /* Ensures the columns stay aligned */
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0; /* Optional: Add borders between rows */
+  text-align: left; /* Align text properly */
+}

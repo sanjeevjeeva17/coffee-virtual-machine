@@ -1,0 +1,173 @@
+/* Container Styles */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.admin-login {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.admin-login button {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+}
+
+/* Coffee Dashboard Accordion */
+.coffee-dashboard-accordion {
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Panel Styles */
+mat-expansion-panel {
+  margin-bottom: 8px;
+  transition: box-shadow 0.3s;
+  border-radius: 8px;
+  min-height: 64px;
+}
+
+mat-expansion-panel:hover {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+mat-expansion-panel-header {
+  padding: 16px;
+  background-color: #eeeeee;
+  font-size: 1.1rem;
+  min-height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+mat-panel-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+mat-panel-description {
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* Panel Content */
+.panel-content {
+  padding: 16px;
+  font-size: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.panel-content .status-text {
+  font-size: 1.2rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-content .status-icon {
+  font-size: 1.5rem;
+  display: inline-block;
+}
+
+/* Status Colors */
+.machine-ready .status-text {
+  color: #4caf50;
+}
+
+.machine-ready .status-icon {
+  color: #4caf50;
+}
+
+.machine-not-ready .status-text {
+  color: #ff9800;
+}
+
+.machine-not-ready .status-icon {
+  color: #ff9800;
+}
+
+/* Panel Footer */
+.panel-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+}
+
+button[mat-button] {
+  color: #1976d2;
+  font-weight: bold;
+}
+
+button[mat-raised-button] {
+  font-size: 1.1rem;
+  padding: 12px 24px;
+  margin-top: 16px;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .container {
+    padding: 8px;
+  }
+
+  mat-expansion-panel-header {
+    padding: 12px;
+  }
+
+  button[mat-raised-button] {
+    font-size: 1rem;
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  mat-expansion-panel-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  mat-panel-description {
+    text-align: center;
+    margin-top: 4px;
+  }
+}
+
+/* Enhance Mat Accordion Toggle Interaction Area */
+mat-expansion-panel-header {
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+mat-expansion-panel-header:hover {
+  background-color: #e0e0e0;
+}
+
+/* Customize the Button Colors */
+button[mat-raised-button][color="primary"] {
+  background-color: #00796b;
+  color: #fff;
+}
+
+button[mat-raised-button][color="primary"]:hover {
+  background-color: #004d40;
+}
+
+button[mat-raised-button][color="accent"] {
+  background-color: #ff4081;
+  color: #fff;
+}
+
+button[mat-raised-button][color="accent"]:hover {
+  background-color: #f50057;
+}
